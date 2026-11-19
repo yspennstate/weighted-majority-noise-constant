@@ -32,7 +32,7 @@
 
 \begin{document}
 \begin{abstract}
-Flip each coordinate of a uniform point of $\{-1,1\}^n$ independently with probability $\epsilon$. Peres proved that a linear threshold function then changes its value with probability at most $2\sqrt\epsilon$, with asymptotic constant $\sqrt{2/\pi}$, and asked whether the constant can be lowered to $2/\pi$, the value for simple majority. We prove that every linear threshold function changes with probability at most $(2/\pi)\sqrt\epsilon+C\epsilon^{3/5}$ for an absolute constant $C$. This proves the weak form of the Majority Is Least Stable conjecture recorded in O'Donnell's list of open problems. The sequences of threshold functions that attain the constant are exactly those in which the threshold $b$ tends to zero and the weights of size at least every fixed multiple of $\sqrt\epsilon$ carry a vanishing share of the squared norm. The bound of Peres does not extend from symmetric to merely centered inputs.
+Flip each coordinate of a uniform point of $\{-1,1\}^n$ independently with probability $\epsilon$. Peres proved that a linear threshold function then changes its value with probability at most $2\sqrt\epsilon$, with asymptotic constant $\sqrt{2/\pi}$, and asked whether the constant can be lowered to $2/\pi$, the value for simple majority. We prove that every linear threshold function changes with probability at most $(2/\pi)\sqrt\epsilon+C\epsilon^{3/5}$ for an absolute constant $C$. This proves the weak form of the Majority Is Least Stable conjecture recorded in O'Donnell's list of open problems. The sequences of threshold functions that attain the constant are exactly those in which the threshold $b$ tends to zero and, for every fixed $c>0$, the weights of size at least $c\sqrt\epsilon$ carry a vanishing share of the squared norm. The bound of Peres does not extend from symmetric to merely centered inputs.
 \end{abstract}
 \maketitle
 
@@ -181,7 +181,7 @@ Integrating by parts against $F_S-\Phi$, and using $\int|g''|\le C/h$, gives $|\
 Choose $h=\max(\tau^{2/3},k^{-1/5})\le1$. Then $\tau/h\le\tau^{1/3}$, $(h+\tau)^{1/2}\le 2(\tau^{1/3}+k^{-1/10})$ and $k^{-1/2}h^{-2}\le k^{-1/10}$. By Lemma~\ref{lem:block} the left-hand side equals $|\sqrt k\,N_\epsilon(f)-2\varphi(b)\sqrt k\,\EE|V||$. Dividing by $\sqrt{k\epsilon}\in[\sqrt{1-\epsilon},1]$ and using $k^{-1}\le2\epsilon$ proves the proposition.
 \end{proof}
 
-For $b=0$ and all weights at most $\eta$ in absolute value, O'Donnell's book gives $\mathrm{Stab}_\rho(f)=\frac2\pi\arcsin\rho+O(\eta/\sqrt{1-\rho^2})$ \cite[Theorem~5.17]{OD14}. With $\rho=1-2\epsilon$ this reads $N_\epsilon(f)=\frac1\pi\arccos(1-2\epsilon)+O(\eta/\sqrt\epsilon)$, and the error is small compared with $\sqrt\epsilon$ only when $\eta=o(\epsilon)$. Proposition~\ref{prop:regular} allows any threshold, needs only $\tau\to0$, and is uniform in $\epsilon$; the proof of Theorem~\ref{thm:main} needs this uniformity.
+As noted in the introduction, the estimate of \cite[Theorem~5.17]{OD14} for $b=0$ and weights of absolute value at most $\eta$ is $\frac2\pi\sqrt\epsilon+o(\sqrt\epsilon)$ only when $\eta=o(\epsilon)$. Proposition~\ref{prop:regular} allows any threshold, needs only $\tau\to0$, and is uniform in $\epsilon$; the proof of Theorem~\ref{thm:main} needs this uniformity.
 
 The second factor in the main term of Proposition~\ref{prop:regular} is controlled by the following lemma. Put $W=V/\sqrt\epsilon$, so that $\EE W^2=1$.
 
@@ -228,7 +228,7 @@ We first record two simple reductions. For a set $H$ of coordinates, let $N^H_\e
 \begin{lemma}\label{lem:freeze}
 For every linear threshold function and every set $H$ of $l$ coordinates, $|N_\epsilon(f)-N^H_\epsilon(f)|\le\epsilon\sqrt l$.
 \end{lemma}
-The proof is the standard coupling of the two noise vectors; compare \cite[Chapter~2]{OD14}.
+The proof is the standard coupling of the two noise vectors.
 
 \begin{proof}
 Couple the two processes so that $N_\epsilon X$ is obtained from $N^H_\epsilon X$ by flipping each coordinate of $H$ independently with probability $\epsilon$, one coordinate at a time. Each intermediate vector is uniform on the cube and independent of the next flip decision, so the probability that the $i$-th of these flips changes $f$ is $\epsilon\Inf_i(f)$, where $\Inf_i(f)$ is the probability that flipping coordinate $i$ of a uniform point changes $f$. A linear threshold function is monotone in each coordinate up to a sign, so $\Inf_i(f)=|\EE f(X)X_i|$, the absolute value of the Fourier coefficient $\hat f(\{i\})$ \cite[Chapter~2]{OD14}. By Cauchy--Schwarz and Parseval, $\sum_{i\in H}\Inf_i(f)\le\sqrt l$.
@@ -249,7 +249,7 @@ Condition on all coordinates of $H$ except $i_0$. The two possible values of $A$
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 Since $N_\epsilon(f)\le1$, it suffices to prove the bound for $\epsilon\le\epsilon_0$, with $\epsilon_0>0$ an absolute constant chosen below. Put $\delta=\epsilon^{1/3}$ and $L=\lceil2\delta^{-2}\log(40/\delta)\rceil$.
 
-Order the coordinates so that $|w_1|\ge|w_2|\ge\dots$. For $r\ge0$ let $\sigma_r^2=\sum_{i>r}w_i^2$, so $\sigma_0=1$. Let $r^*$ be the least $r\le L$ such that $\sigma_r=0$ or $\max_{i>r}|w_i|\le\delta\sigma_r$, if such an $r$ exists. This is the critical index of Servedio \cite{Ser07}, and the case split below is the dichotomy used there.
+Order the coordinates so that $|w_1|\ge|w_2|\ge\dots$. For $r\ge0$ let $\sigma_r^2=\sum_{i>r}w_i^2$, so $\sigma_0=1$. Let $r^*$ be the least $r\le L$ such that $\sigma_r=0$ or $\max_{i>r}|w_i|\le\delta\sigma_r$, if such an $r$ exists. This is the critical index of Servedio \cite{Ser07}, and the case split below is his case analysis; the geometric decay of the tail norm before the critical index is \cite[Lemma~5.3]{DRST09}.
 
 \emph{Case 1: $r^*$ exists.} Let $H=\{1,\dots,r^*\}$. If $\sigma_{r^*}=0$ then $N^H_\epsilon(f)=0$. Otherwise the normalized remaining weights $w_i/\sigma_{r^*}$, $i>r^*$, have $\sum|w_i/\sigma_{r^*}|^3\le\delta$. Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}, applied to the remaining function for each value of $A$, together with $\varphi\le(2\pi)^{-1/2}$ and $(1-2\epsilon)^{-1/2}\le1+2\epsilon$, give
 \[
@@ -336,6 +336,7 @@ The script \texttt{check.py} is available at \url{https://github.com/yspennstate
 \bibitem{BKS} I.~Benjamini, G.~Kalai and O.~Schramm, \emph{Noise sensitivity of Boolean functions and applications to percolation}, Inst.\ Hautes \'Etudes Sci.\ Publ.\ Math.\ \textbf{90} (1999), 5--43. doi:10.1007/BF02698830.
 \bibitem{Ber41} A.~C.~Berry, \emph{The accuracy of the Gaussian approximation to the sum of independent variates}, Trans.\ Amer.\ Math.\ Soc.\ \textbf{49} (1941), 122--136. doi:10.1090/S0002-9947-1941-0003498-3.
 \bibitem{BS23} A.~Biswas and P.~Sarkar, \emph{On the ``majority is least stable'' conjecture}, Inform.\ Process.\ Lett.\ \textbf{179} (2023), 106295. doi:10.1016/j.ipl.2022.106295.
+\bibitem{DRST09} I.~Diakonikolas, P.~Raghavendra, R.~A.~Servedio and L.-Y.~Tan, \emph{Average sensitivity and noise sensitivity of polynomial threshold functions}, arXiv:0909.5011, 2009.
 \bibitem{Erd45} P.~Erd\H{o}s, \emph{On a lemma of Littlewood and Offord}, Bull.\ Amer.\ Math.\ Soc.\ \textbf{51} (1945), 898--902. doi:10.1090/S0002-9904-1945-08454-7.
 \bibitem{Ess42} C.-G.~Esseen, \emph{On the Liapounoff limit of error in the theory of probability}, Ark.\ Mat.\ Astr.\ Fys.\ \textbf{28A} (1942), no.~9, 1--19. Zbl 0027.33902.
 
