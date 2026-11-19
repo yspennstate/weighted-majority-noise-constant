@@ -1,0 +1,28 @@
+Lemma 2.1: N_eps(f) = k^{-1} sum_j E[f(S) sgn Z_j], exact
+  w=(1, 1) b=0 eps=1/3: 5/18 (agree)
+  w=(1, 2, 3) b=1 eps=2/7: 207/686 (agree)
+  w=(1, -1, 3, 2) b=1 eps=2/5: 53/125 (agree)
+  w=(10, 1, 1) b=-10 eps=1/4: 37/256 (agree)
+  w=(4, 0, -2) b=2 eps=3/8: 3/8 (agree)
+  w=(2, 2, 1) b=0 eps=1/3: 10/27 (agree)
+Lemma 3.3: E|W| <= sqrt(2/pi) (1-2 eps)^(-1/2), random weights
+  60 cases, largest ratio E|W| / bound = 0.724457
+Simple majority: N_eps / sqrt(eps) against 2/pi = 0.636619772
+     n      eps    N/sqrt(eps)   arccos(1-2eps)/(pi sqrt(eps))
+     41  0.02439   0.544198299   0.639236481
+    151  0.00662   0.539313888   0.637324546
+    401  0.00249   0.538188723   0.636884666
+    151  0.04000   0.628167146   0.640942168
+    401  0.04000   0.636230775   0.640942168
+    401  0.01000   0.617031668   0.637685609
+    801  0.01000   0.627654760   0.637685609
+Proposition 3.2 for simple majority (b = 0): N/sqrt(eps) against 2 phi(0) E|V|/sqrt(eps)
+     n      eps    N/sqrt(eps)   main term    difference
+    101  0.04000   0.621466     0.616686    0.004781
+    401  0.04000   0.636231     0.631802    0.004429
+    801  0.04000   0.638597     0.634222    0.004375
+    401  0.01000   0.617032     0.615853    0.001178
+    801  0.01000   0.627655     0.626536    0.001119
+Proposition 5.1 at n = 256, eps = 1/16
+  lower bound = 0.996101273 > 0.996; 2 sqrt(eps) = 1/2
+ALL CHECKS PASS
