@@ -67,7 +67,7 @@ The correlation can be computed block by block. Let $\varphi$ be the standard no
 \qquad
 \EE|V|\le\sqrt{\frac{2\epsilon}{\pi}}\,(1-2\epsilon)^{-1/2},
 \]
-the second for all weights, by comparing the characteristic function of $V$ with a Gaussian one (Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}). Since $2\varphi(b)\sqrt{2/\pi}\le2/\pi$, the constant $2/\pi$ follows as soon as $\tau$ is small, with no condition relating the weights to $\epsilon$. The general case reduces to this one by fixing the values of the coordinates with the largest weights, up to the critical index of Servedio \cite{Ser07}: with the weights ordered so that $|w_1|\ge|w_2|\ge\dots$, it is the least $r$ with $\max_{i>r}|w_i|\le\epsilon^{1/3}(\sum_{i>r}w_i^2)^{1/2}$. Fixing $l$ coordinates changes $\mathrm{NS}_\epsilon(f)$ by at most $\epsilon\sqrt l$ (Lemma~\ref{lem:freeze}). If no critical index occurs within $O(\epsilon^{-2/3}\log(1/\epsilon))$ steps, one coordinate dominates and $\mathrm{NS}_\epsilon(f)\le(3/5+o(1))\sqrt\epsilon$, with $3/5<2/\pi$ (Lemma~\ref{lem:dominated}).
+the second for all weights, by comparing the characteristic function of $V$ with a Gaussian one (Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}). Since $2\varphi(b)\sqrt{2/\pi}\le2/\pi$, the constant $2/\pi$ follows as soon as $\tau$ is small, with no condition relating the weights to $\epsilon$. The general case reduces to this one by fixing the values of the coordinates with the largest weights, up to the critical index of Servedio \cite{Ser07}: with the weights ordered so that $|w_1|\ge|w_2|\ge\dots$, it is the least $r$ with $\max_{i>r}|w_i|\le\epsilon^{1/3}(\sum_{i>r}w_i^2)^{1/2}$. Fixing $l$ coordinates changes $\mathrm{NS}_\epsilon(f)$ by at most $\epsilon\sqrt l$ (Lemma~\ref{lem:freeze}). If the critical index exceeds a bound of order $\epsilon^{-2/3}\log(1/\epsilon)$, one coordinate dominates and $\mathrm{NS}_\epsilon(f)\le(3/5+o(1))\sqrt\epsilon$, with $3/5<2/\pi$ (Lemma~\ref{lem:dominated}).
 
 \begin{theorem}\label{thm:main}
 There is an absolute constant $C$ such that every linear threshold function $f$ satisfies
@@ -228,7 +228,7 @@ For every linear threshold function and every set $H$ of $l$ coordinates, $|\mat
 \end{lemma}
 
 \begin{proof}
-Obtain $N_\epsilon X$ from $N^H_\epsilon X$ by flipping the coordinates of $H$ one at a time, each with probability $\epsilon$. Each intermediate vector is uniform on the cube, so the flip of coordinate $i$ changes $f$ with probability $\epsilon\Inf_i(f)$, where $\Inf_i(f)$ is the influence of coordinate $i$; and $\sum_{i\in H}\Inf_i(f)\le\sqrt l$ for a function that is monotone in each coordinate up to a sign \cite[Chapter~2]{OD14}.
+Obtain $N_\epsilon X$ from $N^H_\epsilon X$ by flipping the coordinates of $H$ one at a time, each with probability $\epsilon$. Each intermediate vector is uniform on the cube, so the flip of coordinate $i$ changes $f$ with probability $\epsilon\Inf_i(f)$, where $\Inf_i(f)$ is the probability that flipping coordinate $i$ of a uniform point changes $f$. A linear threshold function is monotone in each coordinate up to a sign, so $\Inf_i(f)=|\hat f(\{i\})|$ \cite[Chapter~2]{OD14}, and $\sum_{i\in H}\Inf_i(f)\le\sqrt l$ by Cauchy--Schwarz and Parseval.
 \end{proof}
 
 Conditionally on the coordinates in $H$, the function of the remaining coordinates is again a linear threshold function, with threshold $b-A$ where $A=\sum_{i\in H}w_iX_i$, and $\mathrm{NS}^H_\epsilon(f)$ is the average of its noise sensitivity. If the remaining weights have squared norm $\sigma^2>0$, we normalize them by $\sigma$ and the threshold becomes $(b-A)/\sigma$. If $\sigma=0$ the remaining function is constant and contributes nothing.
@@ -246,15 +246,15 @@ Condition on all coordinates of $H$ except $i_0$. The two possible values of $A$
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 Since $\mathrm{NS}_\epsilon(f)\le1$, it suffices to prove the bound for $\epsilon\le\epsilon_0$, with $\epsilon_0>0$ an absolute constant chosen below. Put $\delta=\epsilon^{1/3}$ and $L=\lceil2\delta^{-2}\log(40/\delta)\rceil$. In this proof $C$ denotes an absolute constant whose value may change from line to line.
 
-Order the coordinates so that $|w_1|\ge|w_2|\ge\dots$. For $r\ge0$ let $\sigma_r^2=\sum_{i>r}w_i^2$, so $\sigma_0=1$. Let $r^*$ be the critical index, with $\delta=\epsilon^{1/3}$, when it is at most $L$; it satisfies $\max_{i>r^*}|w_i|\le\delta\sigma_{r^*}$, and the case split below is the case analysis of Servedio \cite{Ser07}.
+Order the coordinates so that $|w_1|\ge|w_2|\ge\dots$. For $r\ge0$ let $\sigma_r^2=\sum_{i>r}w_i^2$, so $\sigma_0=1$. Let $r^*$ be the critical index, with $\delta=\epsilon^{1/3}$, when it is at most $L$; the case split below is the case analysis of Servedio \cite{Ser07}.
 
-\emph{Case 1: $r^*$ exists.} Let $H=\{1,\dots,r^*\}$. If $\sigma_{r^*}=0$ then $\mathrm{NS}^H_\epsilon(f)=0$. Otherwise the normalized remaining weights $w_i/\sigma_{r^*}$, $i>r^*$, have $\sum|w_i/\sigma_{r^*}|^3\le\delta$. Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}, applied to the remaining function for each value of $A$, together with $\varphi\le(2\pi)^{-1/2}$ and $(1-2\epsilon)^{-1/2}\le1+2\epsilon$, give
+\emph{Case 1: the critical index is at most $L$.} Let $H=\{1,\dots,r^*\}$. If $\sigma_{r^*}=0$ then $\mathrm{NS}^H_\epsilon(f)=0$. Otherwise the normalized remaining weights $w_i/\sigma_{r^*}$, $i>r^*$, have $\sum|w_i/\sigma_{r^*}|^3\le\delta$. Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}, applied to the remaining function for each value of $A$, together with $\varphi\le(2\pi)^{-1/2}$ and $(1-2\epsilon)^{-1/2}\le1+2\epsilon$, give
 \[
 \frac{\mathrm{NS}^H_\epsilon(f)}{\sqrt\epsilon}\le\frac2\pi(1+2\epsilon)+C\bigl(\delta^{1/3}+\epsilon^{1/10}\bigr)\le\frac2\pi+C\epsilon^{1/10}.
 \]
 By Lemma~\ref{lem:freeze}, $\mathrm{NS}_\epsilon(f)\le \mathrm{NS}^H_\epsilon(f)+\epsilon\sqrt L$, and $\epsilon\sqrt L\le C\epsilon^{2/3}\log^{1/2}(40/\epsilon)\le C\epsilon^{3/5}$. This gives the claimed bound.
 
-\emph{Case 2: $r^*$ does not exist.} Then $n>L$ and $|w_{r+1}|>\delta\sigma_r$ for every $r<L$, so $\sigma_{r+1}^2\le(1-\delta^2)\sigma_r^2$ and
+\emph{Case 2: the critical index exceeds $L$.} Then $n>L$ and $|w_{r+1}|>\delta\sigma_r$ for every $r<L$, so $\sigma_{r+1}^2\le(1-\delta^2)\sigma_r^2$ and
 \[
 \sigma_L\le(1-\delta^2)^{L/2}\le e^{-L\delta^2/2}\le\delta/40.
 \]
