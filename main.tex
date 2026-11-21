@@ -65,7 +65,7 @@ Peres's proof rests on a random partition of the coordinates. Let $k=\lfloor1/\e
 \qquad
 \EE|V|\le\sqrt{\frac{2\epsilon}{\pi}}\,(1-2\epsilon)^{-1/2},
 \]
-the second for all weights, by comparing the characteristic function of $V$ with a Gaussian one (Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}). Since $2\varphi(b)\sqrt{2/\pi}\le2/\pi$, the constant $2/\pi$ follows as soon as $\tau$ is small, with no condition relating the weights to $\epsilon$. The general case reduces to this one by fixing the values of the coordinates with the largest weights, up to the critical index of Servedio \cite{Ser07}. Fixing $l$ coordinates changes $N_\epsilon(f)$ by at most $\epsilon\sqrt l$ (Lemma~\ref{lem:freeze}). If no critical index occurs within $O(\epsilon^{-2/3}\log(1/\epsilon))$ steps, one coordinate dominates and $N_\epsilon(f)\le(3/5+o(1))\sqrt\epsilon$, with $3/5<2/\pi$ (Lemma~\ref{lem:dominated}).
+the second for all weights, by comparing the characteristic function of $V$ with a Gaussian one (Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}). Since $2\varphi(b)\sqrt{2/\pi}\le2/\pi$, the constant $2/\pi$ follows as soon as $\tau$ is small, with no condition relating the weights to $\epsilon$. The general case reduces to this one by fixing the values of the coordinates with the largest weights, up to the critical index of Servedio \cite{Ser07}: with the weights ordered so that $|w_1|\ge|w_2|\ge\dots$, it is the least $r$ with $\max_{i>r}|w_i|\le\epsilon^{1/3}(\sum_{i>r}w_i^2)^{1/2}$. Fixing $l$ coordinates changes $N_\epsilon(f)$ by at most $\epsilon\sqrt l$ (Lemma~\ref{lem:freeze}). If no critical index occurs within $O(\epsilon^{-2/3}\log(1/\epsilon))$ steps, one coordinate dominates and $N_\epsilon(f)\le(3/5+o(1))\sqrt\epsilon$, with $3/5<2/\pi$ (Lemma~\ref{lem:dominated}).
 
 \begin{theorem}\label{thm:main}
 There is an absolute constant $C$ such that every linear threshold function $f$ satisfies
@@ -102,7 +102,7 @@ Section~\ref{sec:centered} concerns Remark~3 of \cite{Per04}. Peres observed tha
 
 \section{The random partition}\label{sec:partition}
 
-Fix a linear threshold function $f$ as in \eqref{eq:ltf} and $0<\epsilon\le1/4$. Write $f(s)=\sgnp(s-b)$ for real $s$ as well, a nondecreasing function. Let $k=\lfloor1/\epsilon\rfloor\ge4$, so that $1-k\epsilon\in[0,\epsilon)$ and $k\epsilon\ge1-\epsilon$.
+Fix a linear threshold function $f$ as in \eqref{eq:ltf} and $0<\epsilon\le1/4$. As in the introduction, $f(s)=\sgnp(s-b)$ for real $s$; it is nondecreasing. Let $k=\lfloor1/\epsilon\rfloor\ge4$, so that $1-k\epsilon\in[0,\epsilon)$ and $k\epsilon\ge1-\epsilon$.
 
 Assign each coordinate $i$ independently to block $j\in\{1,\dots,k\}$ with probability $\epsilon$ for each $j$, and to block $0$ with the remaining probability $1-k\epsilon$. The partition is independent of $X$. Put
 \[
@@ -327,7 +327,7 @@ This paper is part of a broader research project on proving open problems with A
 
 \section*{Data and code availability}
 
-The script \texttt{check.py} is available at \url{https://github.com/yspennstate/weighted-majority-noise-constant}. It computes both sides of the identity of Lemma~\ref{lem:block} in exact arithmetic for six linear threshold functions by enumerating all partitions, at values of $\epsilon$ up to $2/5$; Lemma~\ref{lem:block} holds for every $0<\epsilon<1$ with the same proof. It checks the inequality of Lemma~\ref{lem:thin} for 60 random weight vectors. It evaluates $N_\epsilon(\mathrm{Maj}_n)/\sqrt\epsilon$ for several $n$ and $\epsilon$ and compares it with the main term $2\varphi(0)\EE|V|/\sqrt\epsilon$ of Proposition~\ref{prop:regular}. It evaluates the bound of Proposition~\ref{prop:centered} at $n=256$ in exact arithmetic.
+The script \texttt{check.py} is available at \url{https://github.com/yspennstate/weighted-majority-noise-constant}. It computes both sides of the identity of Lemma~\ref{lem:block} in exact arithmetic for six linear threshold functions by enumerating all partitions, at values of $\epsilon$ up to $2/5$; the proof of the identity uses only $k\epsilon\le1$ and applies to them unchanged. It checks the inequality of Lemma~\ref{lem:thin} for 60 random weight vectors. It evaluates $N_\epsilon(\mathrm{Maj}_n)/\sqrt\epsilon$ for several $n$ and $\epsilon$ and compares it with the main term $2\varphi(0)\EE|V|/\sqrt\epsilon$ of Proposition~\ref{prop:regular}. It evaluates the bound of Proposition~\ref{prop:centered} at $n=256$ in exact arithmetic.
 
 \begin{thebibliography}{99}
 \bibitem{BKS} I.~Benjamini, G.~Kalai and O.~Schramm, \emph{Noise sensitivity of Boolean functions and applications to percolation}, Inst.\ Hautes \'Etudes Sci.\ Publ.\ Math.\ \textbf{90} (1999), 5--43. doi:10.1007/BF02698830.
