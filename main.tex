@@ -20,19 +20,19 @@
 \newcommand{\sgnz}{\operatorname{sgn}}
 \newcommand{\Inf}{\operatorname{Inf}}
 
-\hypersetup{pdftitle={The sharp small-noise constant for weighted majority},pdfauthor={Yitzchak Shmalo}}
+\hypersetup{pdftitle={The sharp small-noise constant for linear threshold functions},pdfauthor={Yitzchak Shmalo}}
 
-\title{The sharp small-noise constant for weighted majority}
+\title{The sharp small-noise constant for linear threshold functions}
 \author{Yitzchak Shmalo}
 \address{Einstein Institute of Mathematics, The Hebrew University of Jerusalem, Jerusalem, Israel}
 \email{yitzchak.shmalo@gmail.com}
 \date{November 2026}
 \subjclass[2020]{60C05; 06E30, 60F05, 68Q87}
-\keywords{noise sensitivity, linear threshold function, weighted majority, Boolean function}
+\keywords{noise sensitivity, linear threshold function, Boolean function, majority is least stable}
 
 \begin{document}
 \begin{abstract}
-Flip each coordinate of a uniform point of $\{-1,1\}^n$ independently with probability $\epsilon$. Peres proved that a linear threshold function then changes its value with probability at most $2\sqrt\epsilon$, with asymptotic constant $\sqrt{2/\pi}$, and asked whether the constant can be lowered to $2/\pi$, the value for simple majority. We prove that every linear threshold function changes with probability at most $(2/\pi)\sqrt\epsilon+C\epsilon^{3/5}$ for an absolute constant $C$. This proves the weak form of the Majority Is Least Stable conjecture recorded in O'Donnell's list of open problems. With the weights normalized so that their squares sum to one, the sequences of linear threshold functions that attain the constant asymptotically are exactly those in which the threshold $b$ tends to zero and, for every fixed $c>0$, the weights of size at least $c\sqrt\epsilon$ carry a vanishing share of the squared norm. Peres's bound holds for independent symmetric real inputs; for centered inputs with no atom at zero no bound $C\sqrt\epsilon$ uniform over the laws holds.
+Flip each coordinate of a uniform point of $\{-1,1\}^n$ independently with probability $\epsilon$. Peres proved that a linear threshold function then changes its value with probability at most $2\sqrt\epsilon$, with asymptotic constant $\sqrt{2/\pi}$, and asked whether the constant can be lowered to $2/\pi$, the value for simple majority. We prove that every linear threshold function changes with probability at most $(2/\pi)\sqrt\epsilon+C\epsilon^{3/5}$ for an absolute constant $C$. This answers Peres's question; O'Donnell's list of open problems records the same inequality as a weaker version of the Majority Is Least Stable conjecture. Normalize the weights so that their squares sum to one. The sequences of linear threshold functions that attain the constant asymptotically are exactly those in which the threshold $b$ tends to zero and, for every fixed $c>0$, the weights of size at least $c\sqrt\epsilon$ carry a vanishing share of the squared norm. Peres's bound holds for independent symmetric real inputs; for centered inputs with no atom at zero no bound $C\sqrt\epsilon$ uniform over the laws holds.
 \end{abstract}
 \maketitle
 
@@ -40,52 +40,54 @@ Flip each coordinate of a uniform point of $\{-1,1\}^n$ independently with proba
 
 For $x\in\{-1,1\}^n$ and $0\le\epsilon\le1/2$, let $N_\epsilon x$ denote the random vector obtained from $x$ by flipping each coordinate independently with probability $\epsilon$. For $f\colon\{-1,1\}^n\to\R$ and $X$ uniform on $\{-1,1\}^n$, put
 \[
-N_\epsilon(f)=\PP\bigl(f(X)\ne f(N_\epsilon X)\bigr).
+\mathrm{NS}_\epsilon(f)=\PP\bigl(f(X)\ne f(N_\epsilon X)\bigr),
 \]
-Expectation is written $\EE$. We call $N_\epsilon(f)$ the noise sensitivity of $f$; for a Boolean function it is $\mathrm{NS}_\epsilon(f)$ in the notation of O'Donnell's book \cite{OD14}. Write $\sgnp(u)=1$ for $u\ge0$ and $\sgnp(u)=-1$ for $u<0$, and let $\sgnz$ be the sign function with $\sgnz(0)=0$. A linear threshold function, also called a weighted majority, is a function of the form
+the noise sensitivity of $f$, in the notation of O'Donnell's book \cite{OD14}. Expectation is written $\EE$. Write $\sgnp(u)=1$ for $u\ge0$ and $\sgnp(u)=-1$ for $u<0$, and let $\sgnz$ be the sign function with $\sgnz(0)=0$. A linear threshold function is a function of the form
 \begin{equation}\label{eq:ltf}
 f(x)=\sgnp\Bigl(\sum_{i=1}^n w_ix_i-b\Bigr),\qquad \sum_{i=1}^n w_i^2=1,
 \end{equation}
-with real weights $w_i$ and threshold $b$. Every nonconstant function $x\mapsto\sgnz(w\cdot x-b)$ that takes only the values $\pm1$ on the cube has this form after scaling, and a zero weight may be added or removed without changing $N_\epsilon(f)$.
+with real weights $w_i$ and threshold $b$. Every nonconstant function $x\mapsto\sgnz(w\cdot x-b)$ that takes only the values $\pm1$ on the cube has this form after scaling, and a zero weight may be added or removed without changing $\mathrm{NS}_\epsilon(f)$.
 
-Benjamini, Kalai and Schramm \cite{BKS} showed that $N_\epsilon(f)\le C\epsilon^{1/4}$ for every linear threshold function and asked for the best exponent. Peres \cite{Per04} proved that the exponent is $1/2$. In his formulation the weights are nonzero and $f$ takes the three values of $\sgnz(\sum w_ix_i-t)$. He showed that $p(n,w,t)=\PP(f(X)\ne f(N_\epsilon X))$ satisfies $p(n,w,t)\le2\sqrt\epsilon$ for $\epsilon\le1/2$, and that
+Benjamini, Kalai and Schramm \cite{BKS} showed that $\mathrm{NS}_\epsilon(f)\le C\epsilon^{1/4}$ for every linear threshold function and asked for the best exponent. Peres \cite{Per04} proved that the exponent is $1/2$. In his formulation the weights are nonzero and $f$ takes the three values of $\sgnz(\sum w_ix_i-t)$. He showed that $p(n,w,t)=\PP(f(X)\ne f(N_\epsilon X))$ satisfies $p(n,w,t)\le2\sqrt\epsilon$ for $\epsilon\le1/2$, and that
 \begin{equation}\label{eq:peres13}
 \limsup_{\epsilon\to0}\ \epsilon^{-1/2}\limsup_{n\to\infty}\sup_{w,t}p(n,w,t)\le\sqrt{2/\pi}.
 \end{equation}
-O'Donnell records this theorem in the form $N_\epsilon(f)\le\sqrt{2/\pi}\sqrt\epsilon+O(\epsilon^{3/2})$ \cite{OD12}, \cite[Remark~5.36]{OD14}.
+O'Donnell records this theorem in the form $\mathrm{NS}_\epsilon(f)\le\sqrt{2/\pi}\sqrt\epsilon+O(\epsilon^{3/2})$ \cite{OD12}, \cite[Remark~5.36]{OD14}.
 For simple majority $\mathrm{Maj}_n(x)=\sgnz(x_1+\dots+x_n)$ with $n$ odd the central limit theorem and Sheppard's formula \cite{She99} give
 \begin{equation}\label{eq:maj}
-\lim_{n\to\infty}N_\epsilon(\mathrm{Maj}_n)=\frac1\pi\arccos(1-2\epsilon)=\frac2\pi\sqrt\epsilon+O(\epsilon^{3/2}),
+\lim_{n\to\infty}\mathrm{NS}_\epsilon(\mathrm{Maj}_n)=\frac1\pi\arccos(1-2\epsilon)=\frac2\pi\sqrt\epsilon+O(\epsilon^{3/2}),
 \end{equation}
 the limit taken over odd $n$. In Remark~4 of \cite{Per04} Peres asked whether simple majority is asymptotically the most noise sensitive linear threshold function, and in particular whether the right-hand side of \eqref{eq:peres13} can be replaced by $2/\pi$.
 
-Peres's proof rests on a random partition of the coordinates. Let $k=\lfloor1/\epsilon\rfloor$, assign each coordinate independently to block $j\in\{1,\dots,k\}$ with probability $\epsilon$ for each $j$ and to no block otherwise, let $Z_j$ be the part of $S=\sum_iw_iX_i$ carried by block $j$, and put $U=k^{-1/2}\sum_{j=1}^k\sgnz(Z_j)$. Then $\sqrt k\,N_\epsilon(f)=\EE[f(S)U]$ (Lemma~\ref{lem:block}), where $f(s)=\sgnp(s-b)$ for real $s$. Peres bounded the right-hand side by $\EE|U|$, using only $|f|\le1$; $\EE|U|$ is at most $k^{-1/2}\EE|2B_k-k|$ for a Binomial$(k,\frac12)$ variable $B_k$, and this tends to $\sqrt{2/\pi}$. The bound ignores the correlation between $f(S)$ and $U$. Comparison with a Gaussian halfspace recovers it only for very small weights: for $b=0$ and weights of absolute value at most $\eta$, \cite[Theorem~5.17]{OD14} gives $N_\epsilon(f)=\frac1\pi\arccos(1-2\epsilon)+O(\eta/\sqrt\epsilon)$, which is $\frac2\pi\sqrt\epsilon+o(\sqrt\epsilon)$ only when $\eta=o(\epsilon)$. We compute the correlation directly. Let $\varphi$ be the standard normal density, $\tau=\sum_i|w_i|^3$, and $V=\sum_iw_iX_iI_i$ with independent Bernoulli$(\epsilon)$ variables $I_i$, so that each $Z_j$ has the law of $V$. A second-order Taylor expansion of a smoothed $f$ in each block and the Berry--Esseen theorem give, for every threshold, $0<\epsilon\le1/4$ and an absolute constant $C$,
+Peres's proof rests on a random partition of the coordinates. Let $k=\lfloor1/\epsilon\rfloor$, assign each coordinate independently to block $j\in\{1,\dots,k\}$ with probability $\epsilon$ for each $j$ and to no block otherwise, let $Z_j$ be the part of $S=\sum_iw_iX_i$ carried by block $j$, and put $U=k^{-1/2}\sum_{j=1}^k\sgnz(Z_j)$. With $\theta_b(s)=\sgnp(s-b)$ for real $s$, Peres's identity reads $\sqrt k\,\mathrm{NS}_\epsilon(f)=\EE[\theta_b(S)U]$ (Lemma~\ref{lem:block}). Peres bounded the right-hand side by $\EE|U|$, using only $|\theta_b|\le1$. Here $\EE|U|\le k^{-1/2}\EE|2B_k-k|$ for a Binomial$(k,\frac12)$ variable $B_k$, and the right-hand side tends to $\sqrt{2/\pi}$. This bound ignores the correlation between $\theta_b(S)$ and $U$. Comparison with a Gaussian halfspace recovers it only for very small weights: for $b=0$ and weights of absolute value at most $\eta$, \cite[Theorem~5.17]{OD14} gives $\mathrm{NS}_\epsilon(f)=\frac1\pi\arccos(1-2\epsilon)+O(\eta/\sqrt\epsilon)$, which is $\frac2\pi\sqrt\epsilon+o(\sqrt\epsilon)$ only when $\eta=o(\epsilon)$.
+
+The correlation can be computed block by block. Let $\varphi$ be the standard normal density, $\tau=\sum_i|w_i|^3$, and $V=\sum_iw_iX_iI_i$ with independent Bernoulli$(\epsilon)$ variables $I_i$, so that each $Z_j$ has the law of $V$. A second-order Taylor expansion of a smoothed $\theta_b$ in each block and the Berry--Esseen theorem give, for every threshold, $0<\epsilon\le1/4$ and an absolute constant $C$,
 \[
-\Bigl|\frac{N_\epsilon(f)}{\sqrt\epsilon}-2\varphi(b)\frac{\EE|V|}{\sqrt\epsilon}\Bigr|\le C\bigl(\tau^{1/3}+\epsilon^{1/10}\bigr),
+\Bigl|\frac{\mathrm{NS}_\epsilon(f)}{\sqrt\epsilon}-2\varphi(b)\frac{\EE|V|}{\sqrt\epsilon}\Bigr|\le C\bigl(\tau^{1/3}+\epsilon^{1/10}\bigr),
 \qquad
 \EE|V|\le\sqrt{\frac{2\epsilon}{\pi}}\,(1-2\epsilon)^{-1/2},
 \]
-the second for all weights, by comparing the characteristic function of $V$ with a Gaussian one (Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}). Since $2\varphi(b)\sqrt{2/\pi}\le2/\pi$, the constant $2/\pi$ follows as soon as $\tau$ is small, with no condition relating the weights to $\epsilon$. The general case reduces to this one by fixing the values of the coordinates with the largest weights, up to the critical index of Servedio \cite{Ser07}: with the weights ordered so that $|w_1|\ge|w_2|\ge\dots$, it is the least $r$ with $\max_{i>r}|w_i|\le\epsilon^{1/3}(\sum_{i>r}w_i^2)^{1/2}$. Fixing $l$ coordinates changes $N_\epsilon(f)$ by at most $\epsilon\sqrt l$ (Lemma~\ref{lem:freeze}). If no critical index occurs within $O(\epsilon^{-2/3}\log(1/\epsilon))$ steps, one coordinate dominates and $N_\epsilon(f)\le(3/5+o(1))\sqrt\epsilon$, with $3/5<2/\pi$ (Lemma~\ref{lem:dominated}).
+the second for all weights, by comparing the characteristic function of $V$ with a Gaussian one (Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}). Since $2\varphi(b)\sqrt{2/\pi}\le2/\pi$, the constant $2/\pi$ follows as soon as $\tau$ is small, with no condition relating the weights to $\epsilon$. The general case reduces to this one by fixing the values of the coordinates with the largest weights, up to the critical index of Servedio \cite{Ser07}: with the weights ordered so that $|w_1|\ge|w_2|\ge\dots$, it is the least $r$ with $\max_{i>r}|w_i|\le\epsilon^{1/3}(\sum_{i>r}w_i^2)^{1/2}$. Fixing $l$ coordinates changes $\mathrm{NS}_\epsilon(f)$ by at most $\epsilon\sqrt l$ (Lemma~\ref{lem:freeze}). If no critical index occurs within $O(\epsilon^{-2/3}\log(1/\epsilon))$ steps, one coordinate dominates and $\mathrm{NS}_\epsilon(f)\le(3/5+o(1))\sqrt\epsilon$, with $3/5<2/\pi$ (Lemma~\ref{lem:dominated}).
 
 \begin{theorem}\label{thm:main}
 There is an absolute constant $C$ such that every linear threshold function $f$ satisfies
 \[
-N_\epsilon(f)\le\frac2\pi\sqrt\epsilon+C\epsilon^{3/5}\qquad(0<\epsilon\le1/4).
+\mathrm{NS}_\epsilon(f)\le\frac2\pi\sqrt\epsilon+C\epsilon^{3/5}\qquad(0<\epsilon\le1/4).
 \]
 \end{theorem}
 
-By \eqref{eq:maj} the constant $2/\pi$ is attained by simple majority, so $\sup_fN_\epsilon(f)=(2/\pi)\sqrt\epsilon+O(\epsilon^{3/5})$, the supremum taken over all $n$ and all linear threshold functions.
+By \eqref{eq:maj} the constant $2/\pi$ is attained by simple majority, so $\sup_f\mathrm{NS}_\epsilon(f)=(2/\pi)\sqrt\epsilon+O(\epsilon^{3/5})$, the supremum taken over all $n$ and all linear threshold functions.
 
 The next result describes the near-extremal functions.
 
 \begin{theorem}\label{thm:char}
-Let $\epsilon_m\to0$, and let $f_m$ be linear threshold functions as in \eqref{eq:ltf}, with weights $w^{(m)}$ and thresholds $b_m$. Then $N_{\epsilon_m}(f_m)/\sqrt{\epsilon_m}\to2/\pi$ if and only if $b_m\to0$ and, for every $c>0$,
+Let $\epsilon_m\to0$, and let $f_m$ be linear threshold functions as in \eqref{eq:ltf}, with weights $w^{(m)}$ and thresholds $b_m$. Then $\mathrm{NS}_{\epsilon_m}(f_m)/\sqrt{\epsilon_m}\to2/\pi$ if and only if $b_m\to0$ and, for every $c>0$,
 \begin{equation}\label{eq:regular}
 \sum_{i:\,|w^{(m)}_i|\ge c\sqrt{\epsilon_m}}\bigl(w^{(m)}_i\bigr)^2\to0.
 \end{equation}
 \end{theorem}
 
-For simple majority in $n$ variables all weights equal $n^{-1/2}$, so \eqref{eq:regular} holds exactly when $n\epsilon\to\infty$. Peres's three-valued functions differ from linear threshold functions only on ties, and the Littlewood--Offord bound of Erd\H{o}s controls the ties. This gives the following answer to Remark~4 of \cite{Per04}.
+For simple majority in $n$ variables all weights equal $n^{-1/2}$, so \eqref{eq:regular} holds exactly when $n\epsilon\to\infty$. Peres's three-valued functions differ from linear threshold functions only on ties, and the Littlewood--Offord bound of Erd\H{o}s \cite{Erd45} controls the ties. This gives the following answer to Remark~4 of \cite{Per04}.
 
 \begin{corollary}\label{cor:peres}
 With $p(n,w,t)$ as above and $C$ the constant of Theorem~\ref{thm:main}, for nonzero weights,
@@ -95,38 +97,38 @@ With $p(n,w,t)$ as above and $C$ the constant of Theorem~\ref{thm:main}, for non
 In particular equality holds in \eqref{eq:peres13} with $2/\pi$ in place of $\sqrt{2/\pi}$, and $\sup_{w,t}p(n,w,t)/\sqrt\epsilon\to2/\pi$ whenever $\epsilon\to0$ and $n\epsilon\to\infty$.
 \end{corollary}
 
-Peres's question is the weak form of the Majority Is Least Stable conjecture of Benjamini, Kalai and Schramm \cite{BKS}, in the form recorded in O'Donnell's list of open problems \cite{OD12}: every linear threshold function should satisfy $N_\epsilon(f)\le(2/\pi)\sqrt\epsilon+o(\sqrt\epsilon)$. The full conjecture asks that $\mathrm{Stab}_\rho(f)\ge\mathrm{Stab}_\rho(\mathrm{Maj}_n)$ for all $\rho\in[0,1]$ and all linear threshold functions $f$ in an odd number $n$ of variables, where $\mathrm{Stab}_\rho(f)=\EE[f(X)f(Y)]$ and $Y$ is obtained from $X$ by flipping each coordinate independently with probability $(1-\rho)/2$. This comparison fails for every odd $n\ge5$ \cite{Gop13} (in five variables also \cite{Jai17}) and holds for $n\le3$ \cite{BS23}. For each $f$ it holds for $\rho$ in a neighborhood of $1$ that depends on $f$ \cite[Corollary~5]{Gop13}, hence for each fixed $n$ in a common neighborhood. For unbiased $f$ and odd $n\ge5$ it holds on $(1-8/((n+7)(n-1)),1)$, while some unbiased linear threshold function violates it on $(0,1-8/((n-3)^2+6))$ \cite[Theorems~9 and~10]{KKM26}. In its place Gopi conjectured that $\mathrm{Stab}_\rho(f)\ge\frac2\pi\arcsin\rho$ for every linear threshold function $f$ and every $\rho\in[0,1]$ \cite[Conjecture~3]{Gop13}; Kamath, Kumar and Manurangsi state it for unbiased functions as the refined Majority Is Least Stable conjecture \cite[Conjecture~1]{KKM26}. With $\rho=1-2\epsilon$ it reads $N_\epsilon(f)\le\frac1\pi\arccos(1-2\epsilon)$, and Gopi observed that Peres's theorem is a weaker form of it near $\rho=1$. Theorem~\ref{thm:main} proves this inequality up to an error $O(\epsilon^{3/5})$, uniformly in $n$.
+Peres's question is a weaker version of the Majority Is Least Stable conjecture of Benjamini, Kalai and Schramm \cite{BKS}, in the form recorded in O'Donnell's list of open problems \cite{OD12}: every linear threshold function should satisfy $\mathrm{NS}_\epsilon(f)\le(2/\pi)\sqrt\epsilon+o(\sqrt\epsilon)$. The full conjecture asks that $\mathrm{Stab}_\rho(f)\ge\mathrm{Stab}_\rho(\mathrm{Maj}_n)$ for all $\rho\in[0,1]$ and all linear threshold functions $f$ in an odd number $n$ of variables, where $\mathrm{Stab}_\rho(f)=\EE[f(X)f(Y)]$ and $Y$ is obtained from $X$ by flipping each coordinate independently with probability $(1-\rho)/2$. This comparison fails for every odd $n\ge5$ \cite{Gop13} (in five variables also \cite{Jai17}) and holds for $n\le3$ \cite{BS23}. For each $f$ it holds for $\rho$ in a neighborhood of $1$ that depends on $f$ \cite[Corollary~5]{Gop13}, hence for each fixed $n$ in a common neighborhood. For unbiased $f$ and odd $n\ge5$ it holds on $(1-8/((n+7)(n-1)),1)$, while some unbiased linear threshold function violates it on $(0,1-8/((n-3)^2+6))$ \cite[Theorems~9 and~10]{KKM26}. In its place Gopi conjectured that $\mathrm{Stab}_\rho(f)\ge\frac2\pi\arcsin\rho$ for every linear threshold function $f$ and every $\rho\in[0,1]$ \cite[Conjecture~3]{Gop13}; Kamath, Kumar and Manurangsi state it for unbiased functions as the refined Majority Is Least Stable conjecture \cite[Conjecture~1]{KKM26}. With $\rho=1-2\epsilon$ it reads $\mathrm{NS}_\epsilon(f)\le\frac1\pi\arccos(1-2\epsilon)$, and Gopi observed that Peres's theorem is a weaker form of it near $\rho=1$. Theorem~\ref{thm:main} proves this inequality up to an error $O(\epsilon^{3/5})$, uniformly in $n$.
 
 
-Section~\ref{sec:centered} concerns Remark~3 of \cite{Per04}. Peres observed that his proof extends to independent symmetric real inputs with no atom at zero, and suggested replacing symmetry by the condition $\EE X_i=0$. We show that for bounded centered inputs with no atom at zero no bound $C\sqrt\epsilon$ uniform over the laws holds; in fact the noise sensitivity can tend to one while $\epsilon\to0$ (Proposition~\ref{prop:centered}).
+In Remark~3 of \cite{Per04} Peres observed that his proof extends to independent symmetric real inputs with no atom at zero, and suggested replacing symmetry by the condition $\EE X_i=0$. In Section~\ref{sec:centered} we show that for bounded centered inputs with no atom at zero no bound $C\sqrt\epsilon$ uniform over the laws holds; in fact the noise sensitivity can tend to one while $\epsilon\to0$ (Proposition~\ref{prop:centered}).
 
 \section{The random partition}\label{sec:partition}
 
-Fix a linear threshold function $f$ as in \eqref{eq:ltf} and $0<\epsilon\le1/4$. As in the introduction, $f(s)=\sgnp(s-b)$ for real $s$; it is nondecreasing. Let $k=\lfloor1/\epsilon\rfloor\ge4$, so that $1-k\epsilon\in[0,\epsilon)$ and $k\epsilon\ge1-\epsilon$.
+Fix a linear threshold function $f$ as in \eqref{eq:ltf} and $0<\epsilon\le1/2$, and let $\theta_b(s)=\sgnp(s-b)$ for real $s$, a nondecreasing function. Let $k=\lfloor1/\epsilon\rfloor$, so that $1-k\epsilon\in[0,\epsilon)$ and $k\epsilon\ge1-\epsilon$.
 
-Assign each coordinate $i$ independently to block $j\in\{1,\dots,k\}$ with probability $\epsilon$ for each $j$, and to block $0$ with the remaining probability $1-k\epsilon$. The partition is independent of $X$. Put
+The partition is that of the introduction, independent of $X$; we call the set of coordinates assigned to no block, each with probability $1-k\epsilon$, block $0$. With $Z_j$, $S$ and $U$ as in the introduction and $Z_0$ the part of $S$ carried by block $0$,
 \[
-Z_j=\sum_{i\text{ in block }j}w_iX_i\quad(0\le j\le k),\qquad S=\sum_{j=0}^kZ_j=\sum_{i=1}^nw_iX_i,\qquad U=k^{-1/2}\sum_{j=1}^k\sgnz(Z_j).
+S=\sum_{j=0}^kZ_j=\sum_{i=1}^nw_iX_i.
 \]
-As in the introduction, $V=\sum_iw_iX_iI_i$, where the $I_i$ are independent Bernoulli$(\epsilon)$ variables independent of $X$. Each $Z_j$ with $j\ge1$ has the law of $V$.
+Each $Z_j$ with $j\ge1$ has the law of $V$, where the variables $I_i$ in $V$ are taken independent of $X$.
 
 \begin{lemma}[Peres]\label{lem:block}
-We have $\sqrt k\,N_\epsilon(f)=\EE[f(S)U]$, $\EE U=0$ and $\EE U^2\le1$. Consequently $\sqrt k\,N_\epsilon(f)$ is at most the standard deviation of $f(S)$, and hence at most $1$.
+For $0<\epsilon\le1/2$ we have $\sqrt k\,\mathrm{NS}_\epsilon(f)=\EE[\theta_b(S)U]$, $\EE U=0$ and $\EE U^2\le1$. Consequently $\sqrt k\,\mathrm{NS}_\epsilon(f)$ is at most the standard deviation of $\theta_b(S)$, and hence at most $1$.
 \end{lemma}
 
 \begin{proof}
-For the three-valued sign and $t=0$ the identity is (2.5) of \cite{Per04}; for $f=\sgnp(\cdot-b)$ the following proof uses that $f$ is nondecreasing. Choose $J$ uniformly from $\{1,\dots,k\}$, independently of everything else, and let $Y$ be $X$ with the coordinates of block $J$ flipped. Given $J=j$, coordinate $i$ is flipped exactly when it lies in block $j$, which happens with probability $\epsilon$ independently over $i$. So $Y$ has the law of $N_\epsilon X$ and $\sum_iw_iY_i=S-2Z_J$.
+For $t=0$ the identity is (2.5) of \cite{Per04}, and Peres treats a threshold $t$ by an extra coordinate of weight $t$ that is never flipped ((2.8) there). For the two-valued $\theta_b$ the proof is the following. Choose $J$ uniformly from $\{1,\dots,k\}$, independently of everything else, and let $Y$ be $X$ with the coordinates of block $J$ flipped. Given $J=j$, coordinate $i$ is flipped exactly when it lies in block $j$, which happens with probability $\epsilon$ independently over $i$. So $Y$ has the law of $N_\epsilon X$, and $f(X)=\theta_b(S)$, $f(Y)=\theta_b(S-2Z_J)$.
 
-Since $f$ is nondecreasing, the indicator of $f(S)\ne f(S-2Z_j)$ equals $\tfrac12(f(S)-f(S-2Z_j))\sgnz(Z_j)$; both sides vanish when $Z_j=0$. Flipping all signs in block $j$ preserves the joint law of the partition and $X$ and maps $(S,Z_j)$ to $(S-2Z_j,-Z_j)$. Hence $\EE[f(S-2Z_j)\sgnz(Z_j)]=-\EE[f(S)\sgnz(Z_j)]$ and
+Since $\theta_b$ is nondecreasing, the indicator of $\theta_b(S)\ne \theta_b(S-2Z_j)$ equals $\tfrac12(\theta_b(S)-\theta_b(S-2Z_j))\sgnz(Z_j)$; both sides vanish when $Z_j=0$. Flipping all signs in block $j$ preserves the joint law of the partition and $X$ and maps $(S,Z_j)$ to $(S-2Z_j,-Z_j)$. Hence $\EE[\theta_b(S-2Z_j)\sgnz(Z_j)]=-\EE[\theta_b(S)\sgnz(Z_j)]$ and
 \[
-\PP\bigl(f(S)\ne f(S-2Z_j)\bigr)=\EE[f(S)\sgnz(Z_j)].
+\PP\bigl(\theta_b(S)\ne \theta_b(S-2Z_j)\bigr)=\EE[\theta_b(S)\sgnz(Z_j)].
 \]
-Averaging over $j$ gives $N_\epsilon(f)=k^{-1}\sum_{j=1}^k\EE[f(S)\sgnz(Z_j)]=k^{-1/2}\EE[f(S)U]$.
+Averaging over $j$ gives $\mathrm{NS}_\epsilon(f)=k^{-1}\sum_{j=1}^k\EE[\theta_b(S)\sgnz(Z_j)]=k^{-1/2}\EE[\theta_b(S)U]$.
 
-Given the partition, the $Z_j$ are independent and symmetric. So $\EE U=0$, the cross terms in $\EE U^2$ vanish, and $\EE U^2=k^{-1}\sum_{j\ge1}\PP(Z_j\ne0)\le1$. Finally $\EE[f(S)U]=\EE[(f(S)-\EE f(S))U]\le\bigl(\EE(f(S)-\EE f(S))^2\bigr)^{1/2}$ by Cauchy--Schwarz, and this is at most $1$ since $f$ takes the values $\pm1$.
+Given the partition, the $Z_j$ are independent and symmetric. So $\EE U=0$, the cross terms in $\EE U^2$ vanish, and $\EE U^2=k^{-1}\sum_{j\ge1}\PP(Z_j\ne0)\le1$. Finally $\EE[\theta_b(S)U]=\EE[(\theta_b(S)-\EE \theta_b(S))U]\le\bigl(\EE(\theta_b(S)-\EE \theta_b(S))^2\bigr)^{1/2}$ by Cauchy--Schwarz, and this is at most $1$ since $\theta_b$ takes the values $\pm1$.
 \end{proof}
 
-Peres used only $|f|\le1$, which gives $\EE[f(S)U]\le\EE|U|$. Given the partition, $\sqrt k\,U$ is a sum of $k$ independent symmetric variables with values in $\{-1,0,1\}$; since adding an independent symmetric summand does not decrease the expected absolute value, $\EE|U|$ is at most $k^{-1/2}\EE|2B_k-k|$ for a Binomial$(k,\frac12)$ variable $B_k$, and $k^{-1/2}\EE|2B_k-k|\to\sqrt{2/\pi}$; this is the source of the constant in \eqref{eq:peres13}. Proposition~\ref{prop:regular} evaluates $\EE[f(S)U]$ to first order when the weights are small.
+Peres used only $|\theta_b|\le1$, which gives $\EE[\theta_b(S)U]\le\EE|U|$, and bounded $\EE|U|$ by $k^{-1/2}\EE|2B_k-k|$ \cite[(2.6), (2.7)]{Per04}; this is the source of the constant in \eqref{eq:peres13}. Proposition~\ref{prop:regular} evaluates $\EE[\theta_b(S)U]$ to first order when the weights are small.
 
 \section{Small weights}\label{sec:regular}
 
@@ -162,22 +164,22 @@ The law of $S=\sum_iw_iX_i$ does not depend on the partition, so $\EE g'(S)$ is 
 \begin{proposition}\label{prop:regular}
 There is an absolute constant $C$ such that every linear threshold function \eqref{eq:ltf} satisfies
 \[
-\Bigl|\frac{N_\epsilon(f)}{\sqrt\epsilon}-2\varphi(b)\frac{\EE|V|}{\sqrt\epsilon}\Bigr|\le C\bigl(\tau^{1/3}+\epsilon^{1/10}\bigr)\qquad(0<\epsilon\le1/4).
+\Bigl|\frac{\mathrm{NS}_\epsilon(f)}{\sqrt\epsilon}-2\varphi(b)\frac{\EE|V|}{\sqrt\epsilon}\Bigr|\le C\bigl(\tau^{1/3}+\epsilon^{1/10}\bigr)\qquad(0<\epsilon\le1/4).
 \]
 \end{proposition}
 
 \begin{proof}
-Let $\kappa$ be a fixed smooth nonnegative function supported on $[-1,1]$ with $\int\kappa=1$. For $0<h\le1$ put $\kappa_h(x)=h^{-1}\kappa(x/h)$ and let $g=f*\kappa_h$ be the convolution, where $f(s)=\sgnp(s-b)$. Then $g$ is smooth and bounded by one, $g=f$ outside $[b-h,b+h]$, $g'=2\kappa_h(\cdot-b)$ and $\|g''\|_\infty\le C/h^2$. Below, $C$ denotes absolute constants that may change from line to line.
+Let $\kappa$ be a fixed smooth nonnegative function supported on $[-1,1]$ with $\int\kappa=1$. For $0<h\le1$ put $\kappa_h(x)=h^{-1}\kappa(x/h)$ and let $g=\theta_b*\kappa_h$ be the convolution. Then $g$ is smooth and bounded by one, $g=\theta_b$ outside $[b-h,b+h]$, $g'=2\kappa_h(\cdot-b)$ and $\|g''\|_\infty\le C/h^2$. Below, $C$ denotes absolute constants that may change from line to line.
 
-By the Berry--Esseen theorem for independent nonidentical summands in the form of Esseen \cite{Ber41,Ess42}, the distribution function $F_S$ of $S$ satisfies $\sup_x|F_S(x)-\Phi(x)|\le C\tau$, where $\Phi$ is the standard normal distribution function. In particular $\PP(|S-b|\le h)\le C(h+\tau)$. As $|f-g|\le2$ and $\EE U^2\le1$,
+By the Berry--Esseen theorem for independent nonidentical summands in the form of Esseen \cite{Ber41,Ess42}, the distribution function $F_S$ of $S$ satisfies $\sup_x|F_S(x)-\Phi(x)|\le C\tau$, where $\Phi$ is the standard normal distribution function. In particular $\PP(|S-b|\le h)\le C(h+\tau)$. As $|\theta_b-g|\le2$ and $\EE U^2\le1$,
 \[
-|\EE[f(S)U]-\EE[g(S)U]|\le2\,\PP(|S-b|\le h)^{1/2}\le C(h+\tau)^{1/2}.
+|\EE[\theta_b(S)U]-\EE[g(S)U]|\le2\,\PP(|S-b|\le h)^{1/2}\le C(h+\tau)^{1/2}.
 \]
 Integrating by parts against $F_S-\Phi$, and using $\int|g''|\le C/h$, gives $|\EE g'(S)-\EE g'(G)|\le C\tau/h$ for a standard normal $G$. Since $\varphi'$ is bounded, $|\EE g'(G)-2\varphi(b)|=2|\int\kappa_h(y)(\varphi(b+y)-\varphi(b))\,dy|\le Ch$. Lemma~\ref{lem:smooth} and $\sqrt k\,\EE|V|\le\sqrt{k\EE V^2}=\sqrt{k\epsilon}\le1$ now give
 \[
-\bigl|\EE[f(S)U]-2\varphi(b)\sqrt k\,\EE|V|\bigr|\le C\Bigl((h+\tau)^{1/2}+\frac\tau h+h+\frac{1}{\sqrt k\,h^2}\Bigr).
+\bigl|\EE[\theta_b(S)U]-2\varphi(b)\sqrt k\,\EE|V|\bigr|\le C\Bigl((h+\tau)^{1/2}+\frac\tau h+h+\frac{1}{\sqrt k\,h^2}\Bigr).
 \]
-Choose $h=\max(\tau^{2/3},k^{-1/5})\le1$. Then $\tau/h\le\tau^{1/3}$, $(h+\tau)^{1/2}\le 2(\tau^{1/3}+k^{-1/10})$ and $k^{-1/2}h^{-2}\le k^{-1/10}$. By Lemma~\ref{lem:block} the left-hand side equals $|\sqrt k\,N_\epsilon(f)-2\varphi(b)\sqrt k\,\EE|V||$. Dividing by $\sqrt{k\epsilon}\in[\sqrt{1-\epsilon},1]$ and using $k^{-1}\le2\epsilon$ proves the proposition.
+Choose $h=\max(\tau^{2/3},k^{-1/5})\le1$. Then $\tau/h\le\tau^{1/3}$, $(h+\tau)^{1/2}\le 2(\tau^{1/3}+k^{-1/10})$ and $k^{-1/2}h^{-2}\le k^{-1/10}$. By Lemma~\ref{lem:block} the left-hand side equals $|\sqrt k\,\mathrm{NS}_\epsilon(f)-2\varphi(b)\sqrt k\,\EE|V||$. Dividing by $\sqrt{k\epsilon}\in[\sqrt{1-\epsilon},1]$ and using $k^{-1}\le2\epsilon$ proves the proposition.
 \end{proof}
 
 
@@ -192,11 +194,11 @@ Moreover, along any sequence $\epsilon_m\to0$ with weights $w^{(m)}$, $\EE|W|\to
 \end{lemma}
 
 \begin{proof}
-For $u\in\R$ put $x_i=uw_i/\sqrt\epsilon$ and $d_i=1-\cos x_i\in[0,2]$. The characteristic function of $W$ is real:
+For $u\in\R$ put $\zeta_i=uw_i/\sqrt\epsilon$ and $d_i=1-\cos \zeta_i\in[0,2]$. The characteristic function of $W$ is real:
 \[
-\psi(u)=\EE e^{iuW}=\prod_i(1-\epsilon+\epsilon\cos x_i)=\prod_i(1-\epsilon d_i).
+\psi(u)=\EE e^{iuW}=\prod_i(1-\epsilon+\epsilon\cos \zeta_i)=\prod_i(1-\epsilon d_i).
 \]
-Since $\epsilon d_i\le2\epsilon<1$ and $-\log(1-y)\le y/(1-y)$ for $0\le y<1$, and $d_i\le x_i^2/2$,
+Since $\epsilon d_i\le2\epsilon<1$ and $-\log(1-y)\le y/(1-y)$ for $0\le y<1$, and $d_i\le \zeta_i^2/2$,
 \begin{equation}\label{eq:cf}
 \psi(u)\ge\exp\Bigl(-\frac{\epsilon\sum_id_i}{1-2\epsilon}\Bigr)\ge\exp\Bigl(-\frac{u^2}{2(1-2\epsilon)}\Bigr).
 \end{equation}
@@ -206,61 +208,61 @@ For a symmetric random variable $Y$ with finite mean,
 \end{equation}
 which follows from $\int_0^\infty(1-\cos(uy))u^{-2}\,du=\pi|y|/2$ and Tonelli's theorem. Applying \eqref{eq:absmoment} to $W$ and to a centered normal variable with variance $(1-2\epsilon)^{-1}$, and using \eqref{eq:cf}, gives the inequality.
 
-Suppose \eqref{eq:regular} holds for every $c>0$. The summands $w_iX_iI_i/\sqrt\epsilon$ of $W$ are independent and centered with total variance one, and their Lindeberg sum at level $\eta>0$ is $\sum_{|w_i|>\eta\sqrt\epsilon}w_i^2\to0$. So $W$ converges in law to a standard normal variable, and since $\EE W^2=1$ the variables $|W|$ are uniformly integrable. Thus $\EE|W|\to\sqrt{2/\pi}$.
+Suppose \eqref{eq:regular} holds for every $c>0$. The summands $w_iX_iI_i/\sqrt\epsilon$ of $W$ are independent and centered with total variance one, and their Lindeberg sum at level $\lambda>0$ is $\sum_{|w_i|>\lambda\sqrt\epsilon}w_i^2\to0$. So $W$ converges in law to a standard normal variable, and since $\EE W^2=1$ the variables $|W|$ are uniformly integrable. Thus $\EE|W|\to\sqrt{2/\pi}$.
 
-Conversely, suppose that for some $c,h_0>0$ the sum in \eqref{eq:regular} is at least $h_0$ along a subsequence. The function $2(1-\cos x)/x^2$ is continuous, tends to zero at infinity and is less than $1$ for $x\ne0$, so its supremum over $|x|\ge c$ is $1-\gamma$ for some $\gamma>0$. For $1\le u\le2$ the coordinates with $|w_i|\ge c\sqrt\epsilon$ have $|x_i|\ge c$, whence
+Conversely, suppose that for some $c,\mu>0$ the sum in \eqref{eq:regular} is at least $\mu$ along a subsequence. The function $2(1-\cos x)/x^2$ is continuous, tends to zero at infinity and is less than $1$ for $x\ne0$, so its supremum over $|x|\ge c$ is $1-\gamma$ for some $\gamma>0$. For $1\le u\le2$ the coordinates with $|w_i|\ge c\sqrt\epsilon$ have $|\zeta_i|\ge c$, whence
 \[
-\epsilon\sum_id_i\le\frac{u^2}2\Bigl(1-\gamma\sum_{|w_i|\ge c\sqrt\epsilon}w_i^2\Bigr)\le\frac{u^2}{2}(1-\gamma h_0).
+\epsilon\sum_id_i\le\frac{u^2}2\Bigl(1-\gamma\sum_{|w_i|\ge c\sqrt\epsilon}w_i^2\Bigr)\le\frac{u^2}{2}(1-\gamma\mu).
 \]
 By the first inequality in \eqref{eq:cf}, on $[1,2]$ the function $\psi$ exceeds $\exp(-u^2/(2(1-2\epsilon)))$ by at least
 \[
-\min_{a\in\{1,4\}}\Bigl(e^{-a(1-\gamma h_0)/(2(1-2\epsilon))}-e^{-a/(2(1-2\epsilon))}\Bigr),
+\min_{u\in\{1,2\}}\Bigl(e^{-u^2(1-\gamma\mu)/(2(1-2\epsilon))}-e^{-u^2/(2(1-2\epsilon))}\Bigr),
 \]
-the smaller of the differences at $u=1$ and $u=2$ (the difference $e^{-x(1-\gamma h_0)}-e^{-x}$ first increases and then decreases in $x>0$). This is bounded below by a positive constant for small $\epsilon$; on the rest of $(0,\infty)$, $\psi(u)\ge\exp(-u^2/(2(1-2\epsilon)))$ by \eqref{eq:cf}. By \eqref{eq:absmoment}, $\limsup\EE|W|<\sqrt{2/\pi}$ along the subsequence.
+the smaller of the differences at $u=1$ and $u=2$ (the difference $e^{-x(1-\gamma\mu)}-e^{-x}$ first increases and then decreases in $x>0$). This is bounded below by a positive constant for small $\epsilon$; on the rest of $(0,\infty)$, $\psi(u)\ge\exp(-u^2/(2(1-2\epsilon)))$ by \eqref{eq:cf}. By \eqref{eq:absmoment}, $\limsup\EE|W|<\sqrt{2/\pi}$ along the subsequence.
 \end{proof}
 
 \section{Proofs of the theorems}\label{sec:proofs}
 
-We first record two simple reductions. For a set $H$ of coordinates, let $N^H_\epsilon X$ be the vector obtained by flipping only the coordinates outside $H$, each with probability $\epsilon$, and put $N^H_\epsilon(f)=\PP(f(X)\ne f(N^H_\epsilon X))$.
+For a set $H$ of coordinates, let $N^H_\epsilon X$ be the vector obtained by flipping only the coordinates outside $H$, each with probability $\epsilon$, and put $\mathrm{NS}^H_\epsilon(f)=\PP(f(X)\ne f(N^H_\epsilon X))$.
 
 \begin{lemma}\label{lem:freeze}
-For every linear threshold function and every set $H$ of $l$ coordinates, $|N_\epsilon(f)-N^H_\epsilon(f)|\le\epsilon\sqrt l$.
+For every linear threshold function and every set $H$ of $l$ coordinates, $|\mathrm{NS}_\epsilon(f)-\mathrm{NS}^H_\epsilon(f)|\le\epsilon\sqrt l$.
 \end{lemma}
 
 \begin{proof}
 Couple the two processes so that $N_\epsilon X$ is obtained from $N^H_\epsilon X$ by flipping each coordinate of $H$ independently with probability $\epsilon$, one coordinate at a time. Each intermediate vector is uniform on the cube and independent of the next flip decision, so the probability that the $i$-th of these flips changes $f$ is $\epsilon\Inf_i(f)$, where $\Inf_i(f)$ is the probability that flipping coordinate $i$ of a uniform point changes $f$. A linear threshold function is monotone in each coordinate up to a sign, so $\Inf_i(f)=|\EE f(X)X_i|$, the absolute value of the Fourier coefficient $\hat f(\{i\})$ \cite[Chapter~2]{OD14}. By Cauchy--Schwarz and Parseval, $\sum_{i\in H}\Inf_i(f)\le\sqrt l$.
 \end{proof}
 
-Conditionally on the coordinates in $H$, the function of the remaining coordinates is again a linear threshold function, with threshold $b-A$ where $A=\sum_{i\in H}w_iX_i$, and $N^H_\epsilon(f)$ is the average of its noise sensitivity. If the remaining weights have squared norm $\sigma^2>0$, we normalize them by $\sigma$ and the threshold becomes $(b-A)/\sigma$. If $\sigma=0$ the remaining function is constant and contributes nothing.
+Conditionally on the coordinates in $H$, the function of the remaining coordinates is again a linear threshold function, with threshold $b-A$ where $A=\sum_{i\in H}w_iX_i$, and $\mathrm{NS}^H_\epsilon(f)$ is the average of its noise sensitivity. If the remaining weights have squared norm $\sigma^2>0$, we normalize them by $\sigma$ and the threshold becomes $(b-A)/\sigma$. If $\sigma=0$ the remaining function is constant and contributes nothing.
 
-The second reduction treats a function dominated by one coordinate.
+The next lemma treats a function dominated by one coordinate.
 
 \begin{lemma}\label{lem:dominated}
-Let $H$ be a set of coordinates containing a coordinate $i_0$ with $|w_{i_0}|=a>0$, and suppose the weights outside $H$ have squared norm $\sigma^2\le a^2/1600$. Then $\sqrt k\,N^H_\epsilon(f)\le3/5$.
+Let $H$ be a set of coordinates containing a coordinate $i_0$ with $|w_{i_0}|=a>0$, and suppose the weights outside $H$ have squared norm $\sigma^2\le a^2/1600$. Then $\sqrt k\,\mathrm{NS}^H_\epsilon(f)\le3/5$.
 \end{lemma}
 
 \begin{proof}
-Condition on all coordinates of $H$ except $i_0$. The two possible values of $A$ differ by $2a$, so at most one of them satisfies $|b-A|<a/2$, and this has conditional probability at most $1/2$. If $|b-A|\ge a/2$, the remaining function $\sgnp(S'-(b-A))$, with $S'$ the sum over the remaining coordinates, takes the value $\sgnp(b-A)$ only if $|S'|\ge a/2$, which by Chebyshev's inequality has probability $q\le4\sigma^2/a^2$. Applying Lemma~\ref{lem:block} to the remaining function, its noise sensitivity is at most $k^{-1/2}(4q)^{1/2}\le k^{-1/2}\cdot4\sigma/a\le k^{-1/2}/10$. The value at most $k^{-1/2}$ holds in every case. Averaging gives $\sqrt kN^H_\epsilon(f)\le1/2+1/10$.
+Condition on all coordinates of $H$ except $i_0$. The two possible values of $A$ differ by $2a$, so at most one of them satisfies $|b-A|<a/2$, and this has conditional probability at most $1/2$. If $|b-A|\ge a/2$, the remaining function $\sgnp(S'-(b-A))$, with $S'$ the sum over the remaining coordinates, takes the value $\sgnp(b-A)$ only if $|S'|\ge a/2$, which by Chebyshev's inequality has probability $q\le4\sigma^2/a^2$. Applying Lemma~\ref{lem:block} to the remaining function, its noise sensitivity is at most $k^{-1/2}(4q)^{1/2}\le k^{-1/2}\cdot4\sigma/a\le k^{-1/2}/10$. The value at most $k^{-1/2}$ holds in every case. Averaging gives $\sqrt k\mathrm{NS}^H_\epsilon(f)\le1/2+1/10$.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-Since $N_\epsilon(f)\le1$, it suffices to prove the bound for $\epsilon\le\epsilon_0$, with $\epsilon_0>0$ an absolute constant chosen below. Put $\delta=\epsilon^{1/3}$ and $L=\lceil2\delta^{-2}\log(40/\delta)\rceil$. In this proof $C$ denotes an absolute constant whose value may change from line to line.
+Since $\mathrm{NS}_\epsilon(f)\le1$, it suffices to prove the bound for $\epsilon\le\epsilon_0$, with $\epsilon_0>0$ an absolute constant chosen below. Put $\delta=\epsilon^{1/3}$ and $L=\lceil2\delta^{-2}\log(40/\delta)\rceil$. In this proof $C$ denotes an absolute constant whose value may change from line to line.
 
-Order the coordinates so that $|w_1|\ge|w_2|\ge\dots$. For $r\ge0$ let $\sigma_r^2=\sum_{i>r}w_i^2$, so $\sigma_0=1$. Let $r^*$ be the least $r\le L$ such that $\sigma_r=0$ or $\max_{i>r}|w_i|\le\delta\sigma_r$, if such an $r$ exists. This is the critical index of Servedio \cite{Ser07}, and the case split below is his case analysis; the geometric decay of $\sigma_r$ before the critical index is \cite[Lemma~5.3]{DRST09}.
+Order the coordinates so that $|w_1|\ge|w_2|\ge\dots$. For $r\ge0$ let $\sigma_r^2=\sum_{i>r}w_i^2$, so $\sigma_0=1$. Let $r^*$ be the least $r\le L$ such that $\sigma_r=0$ or $\max_{i>r}|w_i|\le\delta\sigma_r$, if such an $r$ exists. This is the critical index of Servedio \cite{Ser07}, and the case split below is his case analysis.
 
-\emph{Case 1: $r^*$ exists.} Let $H=\{1,\dots,r^*\}$. If $\sigma_{r^*}=0$ then $N^H_\epsilon(f)=0$. Otherwise the normalized remaining weights $w_i/\sigma_{r^*}$, $i>r^*$, have $\sum|w_i/\sigma_{r^*}|^3\le\delta$. Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}, applied to the remaining function for each value of $A$, together with $\varphi\le(2\pi)^{-1/2}$ and $(1-2\epsilon)^{-1/2}\le1+2\epsilon$, give
+\emph{Case 1: $r^*$ exists.} Let $H=\{1,\dots,r^*\}$. If $\sigma_{r^*}=0$ then $\mathrm{NS}^H_\epsilon(f)=0$. Otherwise the normalized remaining weights $w_i/\sigma_{r^*}$, $i>r^*$, have $\sum|w_i/\sigma_{r^*}|^3\le\delta$. Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin}, applied to the remaining function for each value of $A$, together with $\varphi\le(2\pi)^{-1/2}$ and $(1-2\epsilon)^{-1/2}\le1+2\epsilon$, give
 \[
-\frac{N^H_\epsilon(f)}{\sqrt\epsilon}\le\frac2\pi(1+2\epsilon)+C\bigl(\delta^{1/3}+\epsilon^{1/10}\bigr)\le\frac2\pi+C\epsilon^{1/10}.
+\frac{\mathrm{NS}^H_\epsilon(f)}{\sqrt\epsilon}\le\frac2\pi(1+2\epsilon)+C\bigl(\delta^{1/3}+\epsilon^{1/10}\bigr)\le\frac2\pi+C\epsilon^{1/10}.
 \]
-By Lemma~\ref{lem:freeze}, $N_\epsilon(f)\le N^H_\epsilon(f)+\epsilon\sqrt L$, and $\epsilon\sqrt L\le C\epsilon^{2/3}\log^{1/2}(40/\epsilon)\le C\epsilon^{3/5}$. This gives the claimed bound.
+By Lemma~\ref{lem:freeze}, $\mathrm{NS}_\epsilon(f)\le \mathrm{NS}^H_\epsilon(f)+\epsilon\sqrt L$, and $\epsilon\sqrt L\le C\epsilon^{2/3}\log^{1/2}(40/\epsilon)\le C\epsilon^{3/5}$. This gives the claimed bound.
 
 \emph{Case 2: $r^*$ does not exist.} Then $n>L$ and $|w_{r+1}|>\delta\sigma_r$ for every $r<L$, so $\sigma_{r+1}^2\le(1-\delta^2)\sigma_r^2$ and
 \[
 \sigma_L\le(1-\delta^2)^{L/2}\le e^{-L\delta^2/2}\le\delta/40.
 \]
-Also $a=|w_1|>\delta\sigma_0=\delta$. Let $H=\{1,\dots,L\}$. Lemma~\ref{lem:dominated} with $i_0=1$ gives $N^H_\epsilon(f)\le\frac35k^{-1/2}\le\frac35\sqrt{\epsilon/(1-\epsilon)}$, and Lemma~\ref{lem:freeze} gives
+Also $a=|w_1|>\delta\sigma_0=\delta$. Let $H=\{1,\dots,L\}$. Lemma~\ref{lem:dominated} with $i_0=1$ gives $\mathrm{NS}^H_\epsilon(f)\le\frac35k^{-1/2}\le\frac35\sqrt{\epsilon/(1-\epsilon)}$, and Lemma~\ref{lem:freeze} gives
 \[
-\frac{N_\epsilon(f)}{\sqrt\epsilon}\le\frac35(1-\epsilon)^{-1/2}+\sqrt{L\epsilon}.
+\frac{\mathrm{NS}_\epsilon(f)}{\sqrt\epsilon}\le\frac35(1-\epsilon)^{-1/2}+\sqrt{L\epsilon}.
 \]
 Since $\sqrt{L\epsilon}\le C\epsilon^{1/6}\log^{1/2}(40/\epsilon)\to0$ and $3/5<2/\pi$, the right-hand side is less than $2/\pi$ for $\epsilon\le\epsilon_0$.
 \end{proof}
@@ -268,29 +270,29 @@ Since $\sqrt{L\epsilon}\le C\epsilon^{1/6}\log^{1/2}(40/\epsilon)\to0$ and $3/5<
 For Theorem~\ref{thm:char} we need a strict gap for functions with one large weight.
 
 \begin{lemma}\label{lem:gap}
-For every $\alpha>0$ there are $\epsilon_1>0$ and $c_\alpha<2/\pi$ such that $N_\epsilon(f)\le c_\alpha\sqrt\epsilon$ for every linear threshold function with $\max_i|w_i|\ge\alpha$ and every $\epsilon\le\epsilon_1$.
+For every $\alpha>0$ there are $\epsilon_1>0$ and $c_\alpha<2/\pi$ such that $\mathrm{NS}_\epsilon(f)\le c_\alpha\sqrt\epsilon$ for every linear threshold function with $\max_i|w_i|\ge\alpha$ and every $\epsilon\le\epsilon_1$.
 \end{lemma}
 
 \begin{proof}
 Let $\beta=\frac2\pi\cdot\frac{1-e^{-\alpha^2/2}}{2}>0$. Fix $\delta\in(0,\alpha)$ so small that $C\delta^{1/3}\le\beta/3$, with $C$ the constant of Proposition~\ref{prop:regular}, and then fix $L$ with $e^{-L\delta^2/2}\le\alpha/40$. Define $r^*$ as in the proof of Theorem~\ref{thm:main}, with these fixed $\delta$ and $L$. Since $|w_1|\ge\alpha>\delta\sigma_0$, we have $r^*\ge1$ when it exists.
 
-If $r^*$ exists, let $H=\{1,\dots,r^*\}$. If $\sigma_{r^*}=0$ then $N^H_\epsilon(f)=0$. Otherwise condition on the coordinates in $H$ other than the first. The two values of $b-A$ differ by $2|w_1|\ge2\alpha$, so one of them has absolute value at least $\alpha$. Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin} bound the noise sensitivity of the remaining function, divided by $\sqrt\epsilon$, by $\frac2\pi e^{-(b-A)^2/(2\sigma_{r^*}^2)}(1+2\epsilon)+\beta/3+C\epsilon^{1/10}$, and $\sigma_{r^*}\le1$. Averaging over the first coordinate and then over the others,
+If $r^*$ exists, let $H=\{1,\dots,r^*\}$. If $\sigma_{r^*}=0$ then $\mathrm{NS}^H_\epsilon(f)=0$. Otherwise condition on the coordinates in $H$ other than the first. The two values of $b-A$ differ by $2|w_1|\ge2\alpha$, so one of them has absolute value at least $\alpha$. Proposition~\ref{prop:regular} and Lemma~\ref{lem:thin} bound the noise sensitivity of the remaining function, divided by $\sqrt\epsilon$, by $\frac2\pi e^{-(b-A)^2/(2\sigma_{r^*}^2)}(1+2\epsilon)+\beta/3+C\epsilon^{1/10}$, and $\sigma_{r^*}\le1$. Averaging over the first coordinate and then over the others,
 \[
-\frac{N^H_\epsilon(f)}{\sqrt\epsilon}\le\frac2\pi\cdot\frac{1+e^{-\alpha^2/2}}2(1+2\epsilon)+\frac\beta3+C\epsilon^{1/10}=\frac2\pi-\frac{2\beta}3+O(\epsilon^{1/10}).
+\frac{\mathrm{NS}^H_\epsilon(f)}{\sqrt\epsilon}\le\frac2\pi\cdot\frac{1+e^{-\alpha^2/2}}2(1+2\epsilon)+\frac\beta3+C\epsilon^{1/10}=\frac2\pi-\frac{2\beta}3+O(\epsilon^{1/10}).
 \]
-If $r^*$ does not exist, then $\sigma_L\le e^{-L\delta^2/2}\le\alpha/40\le|w_1|/40$, and Lemma~\ref{lem:dominated} gives $N^H_\epsilon(f)/\sqrt\epsilon\le\frac35(1-\epsilon)^{-1/2}$ with $H=\{1,\dots,L\}$. In both cases Lemma~\ref{lem:freeze} adds at most $\sqrt{L\epsilon}$, where $L$ now depends only on $\alpha$. Taking $c_\alpha$ between $\max(\frac2\pi-\frac\beta2,\frac35)$ and $2/\pi$ and $\epsilon_1$ small proves the lemma.
+If $r^*$ does not exist, then $\sigma_L\le e^{-L\delta^2/2}\le\alpha/40\le|w_1|/40$, and Lemma~\ref{lem:dominated} gives $\mathrm{NS}^H_\epsilon(f)/\sqrt\epsilon\le\frac35(1-\epsilon)^{-1/2}$ with $H=\{1,\dots,L\}$. In both cases Lemma~\ref{lem:freeze} adds at most $\sqrt{L\epsilon}$, where $L$ now depends only on $\alpha$. Taking $c_\alpha$ between $\max(\frac2\pi-\frac\beta2,\frac35)$ and $2/\pi$ and $\epsilon_1$ small proves the lemma.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:char}]
 Write $w=w^{(m)}$, $b=b_m$, $\epsilon=\epsilon_m$ and $W$ as in Lemma~\ref{lem:thin}.
 
-Suppose $b\to0$ and \eqref{eq:regular} holds for every $c>0$. If $\max_i|w_i|\ge\alpha>0$ along a subsequence, then eventually $\alpha\ge c\sqrt\epsilon$ and the sum in \eqref{eq:regular} is at least $\alpha^2$, a contradiction. Hence $\tau\le\max_i|w_i|\to0$, and Proposition~\ref{prop:regular} gives $N_\epsilon(f)/\sqrt\epsilon=2\varphi(b)\EE|W|+o(1)$. By Lemma~\ref{lem:thin} this tends to $2\varphi(0)\sqrt{2/\pi}=2/\pi$.
+Suppose $b\to0$ and \eqref{eq:regular} holds for every $c>0$. If $\max_i|w_i|\ge\alpha>0$ along a subsequence, then eventually $\alpha\ge c\sqrt\epsilon$ and the sum in \eqref{eq:regular} is at least $\alpha^2$, a contradiction. Hence $\tau\le\max_i|w_i|\to0$, and Proposition~\ref{prop:regular} gives $\mathrm{NS}_\epsilon(f)/\sqrt\epsilon=2\varphi(b)\EE|W|+o(1)$. By Lemma~\ref{lem:thin} this tends to $2\varphi(0)\sqrt{2/\pi}=2/\pi$.
 
-Conversely, suppose $N_\epsilon(f)/\sqrt\epsilon\to2/\pi$. By Lemma~\ref{lem:gap}, $\max_i|w_i|\to0$, so again $N_\epsilon(f)/\sqrt\epsilon=2\varphi(b)\EE|W|+o(1)$. Since $\varphi(b)\le\varphi(0)$ and $\limsup\EE|W|\le\sqrt{2/\pi}$, the product can tend to $2\varphi(0)\sqrt{2/\pi}$ only if $\varphi(b)\to\varphi(0)$ and $\EE|W|\to\sqrt{2/\pi}$. The first gives $b\to0$ and the second gives \eqref{eq:regular} by Lemma~\ref{lem:thin}.
+Conversely, suppose $\mathrm{NS}_\epsilon(f)/\sqrt\epsilon\to2/\pi$. By Lemma~\ref{lem:gap}, $\max_i|w_i|\to0$, so again $\mathrm{NS}_\epsilon(f)/\sqrt\epsilon=2\varphi(b)\EE|W|+o(1)$. Since $\varphi(b)\le\varphi(0)$ and $\limsup\EE|W|\le\sqrt{2/\pi}$, the product can tend to $2\varphi(0)\sqrt{2/\pi}$ only if $\varphi(b)\to\varphi(0)$ and $\EE|W|\to\sqrt{2/\pi}$. The first gives $b\to0$ and the second gives \eqref{eq:regular} by Lemma~\ref{lem:thin}.
 \end{proof}
 
 \begin{proof}[Proof of Corollary~\ref{cor:peres}]
-Let $f$ be the three-valued function $\sgnz(\sum w_ix_i-t)$ with nonzero weights and let $f_+=\sgnp(\sum w_ix_i-t)$. The two agree off the set $T=\{x:\sum w_ix_i=t\}$. Since $X$ and $N_\epsilon X$ are both uniform, $|p(n,w,t)-N_\epsilon(f_+)|\le2\PP(X\in T)$. By the theorem of Erd\H{o}s on the Littlewood--Offord problem \cite{Erd45}, $\PP(X\in T)\le\binom{n}{\lfloor n/2\rfloor}2^{-n}$ for nonzero weights. Theorem~\ref{thm:main} applied to $f_+$, after scaling the weights, gives the displayed bound. Letting $n\to\infty$ and then $\epsilon\to0$ gives the upper bound $2/\pi$ in \eqref{eq:peres13}, and simple majority with \eqref{eq:maj} gives the matching lower bound. If $n\epsilon\to\infty$, then $\binom{n}{\lfloor n/2\rfloor}2^{-n}=O(n^{-1/2})=o(\sqrt\epsilon)$, and the displayed bound gives $\limsup\sup_{w,t}p(n,w,t)/\sqrt\epsilon\le2/\pi$. For the lower bound let $n'\in\{n-1,n\}$ be odd and $0<\eta<1$. The function $\sgnz(x_1+\dots+x_{n'}+\eta x_n)$ for even $n$, or $\sgnz(x_1+\dots+x_n)$ for odd $n$, has nonzero weights, never ties, and equals simple majority on $n'$ coordinates. Since $n'\epsilon\to\infty$, Theorem~\ref{thm:char} shows that its noise sensitivity divided by $\sqrt\epsilon$ tends to $2/\pi$.
+Let $f_0$ be the three-valued function $\sgnz(\sum w_ix_i-t)$ with nonzero weights and let $f_+=\sgnp(\sum w_ix_i-t)$. The two agree off the set $T=\{x:\sum w_ix_i=t\}$. Since $X$ and $N_\epsilon X$ are both uniform, $|p(n,w,t)-\mathrm{NS}_\epsilon(f_+)|\le2\PP(X\in T)$. By the theorem of Erd\H{o}s on the Littlewood--Offord problem \cite{Erd45}, $\PP(X\in T)\le\binom{n}{\lfloor n/2\rfloor}2^{-n}$ for nonzero weights. Theorem~\ref{thm:main} applied to $f_+$, after scaling the weights, gives the displayed bound. Letting $n\to\infty$ and then $\epsilon\to0$ gives the upper bound $2/\pi$ in \eqref{eq:peres13}, and simple majority with \eqref{eq:maj} gives the matching lower bound. If $n\epsilon\to\infty$, then $\binom{n}{\lfloor n/2\rfloor}2^{-n}=O(n^{-1/2})=o(\sqrt\epsilon)$, and the displayed bound gives $\limsup\sup_{w,t}p(n,w,t)/\sqrt\epsilon\le2/\pi$. For the lower bound let $n'\in\{n-1,n\}$ be odd. The function $\sgnz(x_1+\dots+x_{n'}+\frac12x_n)$ for even $n$, or $\sgnz(x_1+\dots+x_n)$ for odd $n$, has nonzero weights, never ties, and equals simple majority on $n'$ coordinates. Since $n'\epsilon\to\infty$, Theorem~\ref{thm:char} shows that its noise sensitivity divided by $\sqrt\epsilon$ tends to $2/\pi$.
 \end{proof}
 
 \section{Centered inputs}\label{sec:centered}
@@ -298,18 +300,18 @@ Let $f$ be the three-valued function $\sgnz(\sum w_ix_i-t)$ with nonzero weights
 Peres noted that Theorem~1.1 of \cite{Per04}, the bound $p\le2\sqrt\epsilon$, holds verbatim for independent symmetric real inputs $X_i$ with $\PP(X_i=0)=0$, and proposed the condition $\EE X_i=0$ as a more interesting replacement for symmetry. The noise operator is the same: each input is multiplied by $-1$ independently with probability $\epsilon$. For non-symmetric $X_i$ the vector $N_\epsilon X$ need not have the law of $X$, and the proof of Lemma~\ref{lem:block}, which uses that flipping a block preserves the law, does not apply. The following example shows that no bound of this kind, uniform over centered laws, can hold.
 
 \begin{proposition}\label{prop:centered}
-Let $n\ge4$ and $\epsilon=n^{-1/2}$. Let $X_1,\dots,X_n$ be independent, each equal to $1$ with probability $1-n^{-2}$ and to $1-n^2$ with probability $n^{-2}$. Then $\EE X_i=0$, $\PP(X_i=0)=0$, and the function $f(x)=\sgnz(\sum_ix_i-(n-1))$ satisfies
+Let $n\ge4$ and $\epsilon=n^{-1/2}$. Let $X_1,\dots,X_n$ be independent, each equal to $1$ with probability $1-n^{-2}$ and to $1-n^2$ with probability $n^{-2}$. Then $\EE X_i=0$, $\PP(X_i=0)=0$, and the function $F(x)=\sgnz(\sum_ix_i-(n-1))$ satisfies
 \[
-\PP\bigl(f(X)\ne f(N_\epsilon X)\bigr)\ge(1-n^{-2})^n\bigl(1-(1-n^{-1/2})^n\bigr)\to1,
+\PP\bigl(F(X)\ne F(N_\epsilon X)\bigr)\ge(1-n^{-2})^n\bigl(1-(1-n^{-1/2})^n\bigr)\to1,
 \]
 while $2\sqrt\epsilon=2n^{-1/4}\to0$. For $n=256$ the left-hand side exceeds $0.996$ while $2\sqrt\epsilon=1/2$.
 \end{proposition}
 
 \begin{proof}
-The mean is $(1-n^{-2})+n^{-2}(1-n^2)=0$. On the event that every $X_i$ equals $1$, which has probability $(1-n^{-2})^n$, we have $f(X)=1$. If in addition at least one input is flipped, the sum drops to at most $n-2$ and $f(N_\epsilon X)=-1$. The flips are independent of $X$, which gives the lower bound. As $n\to\infty$, $(1-n^{-2})^n\to1$ and $(1-n^{-1/2})^n\le e^{-\sqrt n}\to0$. At $n=256$ the bound equals $(1-2^{-16})^{256}(1-(15/16)^{256})>0.996$.
+The mean is $(1-n^{-2})+n^{-2}(1-n^2)=0$. On the event that every $X_i$ equals $1$, which has probability $(1-n^{-2})^n$, we have $F(X)=1$. If in addition at least one input is flipped, the sum drops to at most $n-2$ and $F(N_\epsilon X)=-1$. The flips are independent of $X$, which gives the lower bound. As $n\to\infty$, $(1-n^{-2})^n\to1$ and $(1-n^{-1/2})^n\le e^{-\sqrt n}\to0$. At $n=256$ the bound equals $(1-2^{-16})^{256}(1-(15/16)^{256})>0.996$.
 \end{proof}
 
-Dividing the inputs and the threshold by $n^2-1$ puts the laws in $[-1,1]$, and dividing by the standard deviation $(n^2-1)^{1/2}$ makes the variance one; neither changes $f$. The law in the example depends on $n$.
+Dividing the inputs and the threshold by $n^2-1$ puts the laws in $[-1,1]$, and dividing by the standard deviation $(n^2-1)^{1/2}$ makes the variance one; neither changes $F$. The law in the example depends on $n$.
 
 \section*{Acknowledgments and funding}
 
@@ -323,17 +325,16 @@ The author holds equity in Heights Labs and in Convex Nexus Capital and has a ma
 
 \section*{Declaration of generative AI and AI-assisted technologies}
 
-This paper is part of a broader research project on proving open problems with AI systems. The results, proofs and text were produced with generative AI systems. OpenAI's Codex wrote the proofs, and Anthropic's Claude (Opus~5.5) checked them and wrote the text. The questions are due to Peres \cite{Per04} and to Benjamini, Kalai and Schramm \cite{BKS}. The proof uses the Berry--Esseen theorem \cite{Ber41,Ess42}, the Littlewood--Offord bound of Erd\H{o}s \cite{Erd45} and the critical index of Servedio \cite{Ser07}. Lemma~\ref{lem:block} extends the identity (2.5) of \cite{Per04}, which uses the random partition of Peres, to thresholds, and Lemma~\ref{lem:freeze} is an elementary coupling bound included for completeness. All other statements, including the computation of Lemma~\ref{lem:smooth}, are new. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
+This paper is part of a broader research project on proving open problems with AI systems. The results, proofs and text were produced with generative AI systems. OpenAI's Codex wrote the proofs, and Anthropic's Claude (Opus~5.5) checked them and wrote the text. The questions are due to Peres \cite{Per04} and to Benjamini, Kalai and Schramm \cite{BKS}. The proof uses the Berry--Esseen theorem \cite{Ber41,Ess42}, the Littlewood--Offord bound of Erd\H{o}s \cite{Erd45}, and the critical index of Servedio \cite{Ser07}, whose case analysis the proof of Theorem~\ref{thm:main} follows. Lemma~\ref{lem:block} is the identity (2.5) of \cite{Per04}, with thresholds treated as in (2.8) there, written for the two-valued sign, and Lemma~\ref{lem:freeze} is an elementary coupling bound included for completeness. All other statements, including the computation of Lemma~\ref{lem:smooth}, are new. The author directed the work and is responsible for the content of the paper and for decisions concerning its dissemination.
 
 \section*{Data and code availability}
 
-The script \texttt{check.py} is available at \url{https://github.com/yspennstate/weighted-majority-noise-constant}. It computes both sides of the identity of Lemma~\ref{lem:block} in exact arithmetic for six linear threshold functions by enumerating all partitions, at values of $\epsilon$ up to $2/5$; the proof of the identity uses only $k\epsilon\le1$ and applies to them unchanged. It checks the inequality of Lemma~\ref{lem:thin} for 60 random weight vectors. It evaluates $N_\epsilon(\mathrm{Maj}_n)/\sqrt\epsilon$ for several $n$ and $\epsilon$ and compares it with the main term $2\varphi(0)\EE|V|/\sqrt\epsilon$ of Proposition~\ref{prop:regular}. It evaluates the bound of Proposition~\ref{prop:centered} at $n=256$ in exact arithmetic.
+The script \texttt{check.py} is available at \url{https://github.com/yspennstate/weighted-majority-noise-constant}. It computes both sides of the identity of Lemma~\ref{lem:block} in exact arithmetic for six linear threshold functions by enumerating all partitions, at values of $\epsilon$ up to $2/5$. It checks the inequality of Lemma~\ref{lem:thin} for 60 random weight vectors. It evaluates $\mathrm{NS}_\epsilon(\mathrm{Maj}_n)/\sqrt\epsilon$ for several $n$ and $\epsilon$ and compares it with the main term $2\varphi(0)\EE|V|/\sqrt\epsilon$ of Proposition~\ref{prop:regular}. It evaluates the bound of Proposition~\ref{prop:centered} at $n=256$ in exact arithmetic.
 
 \begin{thebibliography}{99}
 \bibitem{BKS} I.~Benjamini, G.~Kalai and O.~Schramm, \emph{Noise sensitivity of Boolean functions and applications to percolation}, Inst.\ Hautes \'Etudes Sci.\ Publ.\ Math.\ \textbf{90} (1999), 5--43. doi:10.1007/BF02698830.
 \bibitem{Ber41} A.~C.~Berry, \emph{The accuracy of the Gaussian approximation to the sum of independent variates}, Trans.\ Amer.\ Math.\ Soc.\ \textbf{49} (1941), 122--136. doi:10.1090/S0002-9947-1941-0003498-3.
 \bibitem{BS23} A.~Biswas and P.~Sarkar, \emph{On the ``majority is least stable'' conjecture}, Inform.\ Process.\ Lett.\ \textbf{179} (2023), 106295. doi:10.1016/j.ipl.2022.106295.
-\bibitem{DRST09} I.~Diakonikolas, P.~Raghavendra, R.~A.~Servedio and L.-Y.~Tan, \emph{Average sensitivity and noise sensitivity of polynomial threshold functions}, arXiv:0909.5011, 2009.
 \bibitem{Erd45} P.~Erd\H{o}s, \emph{On a lemma of Littlewood and Offord}, Bull.\ Amer.\ Math.\ Soc.\ \textbf{51} (1945), 898--902. doi:10.1090/S0002-9904-1945-08454-7.
 \bibitem{Ess42} C.-G.~Esseen, \emph{On the Liapounoff limit of error in the theory of probability}, Ark.\ Mat.\ Astr.\ Fys.\ \textbf{28A} (1942), no.~9, 1--19. Zbl 0027.33902.
 

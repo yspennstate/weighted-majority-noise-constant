@@ -1,4 +1,4 @@
-"""Checks for 'The sharp small-noise constant for weighted majority'.
+"""Checks for 'The sharp small-noise constant for linear threshold functions'.
 
 Run with Python 3 (standard library only). Exact rational arithmetic is used
 where the paper states an identity or an exact value.
@@ -54,7 +54,7 @@ def block_side(w, b, eps):
     return total / k
 
 
-print("Lemma 2.1: N_eps(f) = k^{-1} sum_j E[f(S) sgn Z_j], exact")
+print("Lemma 2.1: NS_eps(f) = k^{-1} sum_j E[f(S) sgn Z_j], exact")
 cases = [((1, 1), 0, Q(1, 3)), ((1, 2, 3), 1, Q(2, 7)), ((1, -1, 3, 2), 1, Q(2, 5)),
          ((10, 1, 1), -10, Q(1, 4)), ((4, 0, -2), 2, Q(3, 8)), ((2, 2, 1), 0, Q(1, 3))]
 for w, b, eps in cases:
@@ -97,7 +97,7 @@ print(f"  60 cases, largest ratio E|W| / bound = {worst:.6f}")
 
 
 def maj_disagreement(n, eps):
-    """N_eps(Maj_n) for odd n, by the distribution of the number of plus signs."""
+    """NS_eps(Maj_n) for odd n, by the distribution of the number of plus signs."""
     half = 2.0 ** (-n)
     tot = 0.0
     for a in range(n + 1):
@@ -115,7 +115,7 @@ def maj_disagreement(n, eps):
     return tot
 
 
-print("Simple majority: N_eps / sqrt(eps) against 2/pi = %.9f" % (2 / pi))
+print("Simple majority: NS_eps / sqrt(eps) against 2/pi = %.9f" % (2 / pi))
 print("     n      eps    N/sqrt(eps)   arccos(1-2eps)/(pi sqrt(eps))")
 for n, eps in [(41, 1 / 41), (151, 1 / 151), (401, 1 / 401), (151, 1 / 25), (401, 1 / 25),
                (401, 1 / 100), (801, 1 / 100)]:
